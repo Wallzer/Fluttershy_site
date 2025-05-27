@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="register_space">
+        <form method="post">
+            
+            <input type="text" name="username" placeholder="Логин" required><br>
+            <input type="password" name="password" placeholder="Пароль" required><br>
+            <button type="submit">Зарегистрироваться</button>
+            {% if message %}
+                <p>{{ message }}</p>
+            {% endif %}
+        </form>
+    </div>
+    
+{% endblock content%}
+
+

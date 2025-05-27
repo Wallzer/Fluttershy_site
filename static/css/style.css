@@ -1,0 +1,150 @@
+body{
+    background-color: rgb(148, 107, 107);
+}
+
+
+.nav_bar{
+    background-color: rgb(81, 56, 56);
+    height: 150px;
+    width: 1000px;
+    align-self: center;
+    justify-self: center;
+}
+.top_buttons{
+    button {
+        background-color: #082639; /* синий фон */
+        color: white;              /* белый текст */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    justify-self: center;
+    
+}
+
+.flytty_imgtop{
+    display: flex;
+    gap: 200px;
+    img{
+        width: 138px;
+    }
+    button {
+        font-size: 20px;
+        background-color: #08263900; /* синий фон */
+        color: white;              /* белый текст */
+        padding: 10px 20px;
+        border: none;
+        border-radius: px;
+        cursor: pointer;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}
+
+.bottom{
+    background-color: #e9d2d234;
+    height: 2000px;
+    display: flex;
+    flex-flow: column-reverse;
+    align-items: center;
+}
+
+
+.login_space {
+    
+    display: flex;
+    flex-direction: column-reverse; /* снизу вверх */
+    align-items: center;
+    justify-content: center;
+    height: 30vh; /* на весь экран */
+    
+    form {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* отступ между полями */
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        button {
+            text-align: center;
+            background-color: #082639; /* синий фон */
+            color: white;              /* белый текст */
+            padding: 10px 120px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        
+    }
+}
+
+.register_space{
+    display: flex;
+    flex-direction: column-reverse; /* снизу вверх */
+    align-items: center;
+    justify-content: center;
+    height: 30vh; /* на весь экран */
+    
+    form {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0px; /* отступ между полями */
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        button {
+            text-align: center;
+            background-color: #082639; /* синий фон */
+            color: white;              /* белый текст */
+            padding: 10px 120px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        
+    }
+
+}
+.blog {
+    color: rebeccapurple;
+    margin: 20px;
+    padding: 10px;
+}
+
+.project {
+    margin-bottom: 15px;
+}
+
+
+.ifuser {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: sans-serif;
+}
+
+.welcome-text {
+    margin: 0 0 5px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-links a {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: 500;
+}
+
+.user-links a:hover {
+    text-decoration: underline;
+}

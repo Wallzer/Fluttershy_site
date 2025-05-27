@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/login" method="post">
+
+</form>
+
+<style>
+    .blog {
+        display: flex;
+        flex-direction: column; /* Располагаем элементы по колонкам */
+        align-items: center; /* Центрируем элементы по горизонтали */
+        justify-content: flex-start; /* Оставляем элементы наверху */
+        height: 100vh; /* Блок будет занимать всю высоту экрана */
+        padding: 20px; /* Добавляем отступы для красивого расположения */
+        box-sizing: border-box; /* Учитываем паддинги в расчет ширины */
+        
+    }
+    
+    .blog h1 {
+        color: #2a0b10c5;
+        margin-bottom: 20px; /* Добавляем отступ снизу */
+    }
+    
+    .blog_space {
+        background-color: #79616123; /* Белый фон для каждого проекта */
+        width: 100%;
+        max-width: 900px; /* фиксированная "рамка" */
+        margin: 15px auto;
+        padding: 20px; /* Добавляем внутренние отступы */
+        margin: 15px 0; /* Добавляем вертикальные отступы между проектами */
+        border-radius: 8px; /* Сглаживаем углы */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень для красивого эффекта */
+    }
+    
+    .blog_space p {
+        color: #2a0b10c5;
+        margin: 10px 0; /* Отступы для текста внутри проекта */
+    }
+    
+    .blog_space a {
+        color: #2a0b1088; /* Темный цвет для заголовков */
+        margin-bottom: 10px; /* Отступ снизу */
+        font-size: 1.25em;
+        text-decoration: none;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+        
+    }
+    
+    
+    
+    
+</style>
+
+
+
+
+
+
+
+<div class="blog">
+    <h1>History:</h1>
+    {% for project in projects %}
+        <div class="blog_space">
+            <a href="/note/{{project.id}}">{{ project.title }}</a>
+            <!-- <h2></h2> Заголовок проекта -->
+            <p>{{ project.description }}</p> <!-- Описание проекта -->
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

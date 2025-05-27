@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Main</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+     <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <div class="corebg"></div>
+
+    <div class="nav_bar">
+        <div class="flytty_imgtop">
+            <img src="/static/images/top.jpg" alt="Top Image">
+            <button onclick="window.location.href='/'">HOME</button>
+            <button onclick="window.location.href='/about'">ABOUT ME</button>
+            <h3></h3>
+            
+        </div>
+        
+        <div class="bottom">
+            <div class="top_buttons">
+                <button onclick="window.location.href='/register'">Регистрация</button>
+                <button onclick="window.location.href='/login_page'">Логин</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 🔥 Вот это — главное: блок для контента -->
+    <div class="main_content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="" async defer></script>
+    {% if user %}
+        <p class="welcome-text">Привет, {{ user.username }}!</p>
+        <div class="user-links">
+            <a href="/profile">Профиль</a>
+            {% if user.username == 'admin' %}
+                <a href="/create_note">create_note</a>
+                <a href="delete_project_page">delete_note</a>
+            {% endif %}
+            <a href="/logout">Выйти</a>
+        </div>
+    {% else %}
+        <div class="user-links">
+            <a href="/login_page">Войти</a>
+            <a href="/register">Регистрация</a>
+        </div>
+    {% endif %}
+</html>
