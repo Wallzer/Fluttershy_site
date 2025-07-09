@@ -8,19 +8,14 @@ from database import Base, SessionLocal, engine
 from routers import auth, projects
 import models
 
-# Создание таблиц
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
-# Подключение статики и шаблонов
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Модель пользователя
 
 
-# Получение сессии базы данных
 def get_db():
     db = SessionLocal()
     try:
@@ -28,7 +23,6 @@ def get_db():
     finally:
         db.close()
 
-# Главная страница
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request, db: Session = Depends(get_db), user: str = Cookie(default=None)):
     current_user = db.query(models.User).filter(models.User.username == user).first() if user else None
@@ -120,7 +114,6 @@ async def read_note(request: Request, note_id: int, db: Session = Depends(get_db
     if not project:
         return HTMLResponse(status_code=404, content="Not Found")
 
-    # Получаем все комментарии к проекту
     comments = db.query(models.Comment).filter(models.Comment.project_id == note_id).all()
     current_user = db.query(models.User).filter(models.User.username == user).first() if user else None
     return templates.TemplateResponse("note.html", {
@@ -140,22 +133,18 @@ def add_comment(
     user: str = Cookie(default=None),
     db: Session = Depends(get_db),
 ):
-    # Если в куках нет user — отправляем на логин
     if not user:
         return RedirectResponse("/login_page", status_code=303)
 
-    # Ищем в БД пользователя по username из куки
     current_user = db.query(models.User).filter(models.User.username == user).first()
     if not current_user:
         # кука есть, а пользователя нет в БД — принудительный логин
         return RedirectResponse("/login_page", status_code=303)
 
-    # Проект должен существовать
     project = db.query(models.Project).get(note_id)
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
 
-    # Создаём комментарий, привязан к project_id и user_id
     comment = models.Comment(
         content=content,
         project_id=note_id,
@@ -164,5 +153,4 @@ def add_comment(
     db.add(comment)
     db.commit()
 
-    # После POST — редирект обратно на страницу проекта
     return RedirectResponse(f"/note/{note_id}", status_code=303)
